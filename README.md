@@ -1,6 +1,24 @@
 # Este projeto e sobre uma Api de um Ecommerce pra jogos
 foi criado somente o back end em django
 
+# No terminal
+cd backend<br>
+python -m venv venv<br>
+venv/Scripts/activate<br>
+para instalar todas as dependencias<br>
+pip install -r requirements.txt<br>
+
+crie um banco de dados postgre e depois use este codigo<br>
+python manage.py migrate<br>
+python manage.py loaddata data1.json<br>
+<br>
+Pronto agora voce injetou os dados no seu banco de dados e esta pronto para testar a API<br>
+Agora crie um Super User<br>
+<br>
+python manage.py createsuperuser<br>
+
+
+
 # Url Produto
 --Get<br>
 http://127.0.0.1:8000/produto/api/v1/   <br>
@@ -61,5 +79,4 @@ http://127.0.0.1:8000/perfil/api/v1/update/perfil/pk   <br>
 <br>
 A Api do perfil serve para logar e deslogar o usuario, registrar o usuario, registrar o perfil do usuario e atualizar o perfil do usuario
 
-para utilizar a api instale o requiriments.txt, e crie um superuser
-python manage.py createsuperuser
+
