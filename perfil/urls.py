@@ -13,8 +13,10 @@ urlpatterns = [
     path(f'{url}token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
     path(f'{url}login/', views.LoginAPI.as_view(), name='login_api_v1'),
-    # path('register/api/v1/', views.RegisterAPI.as_view(), name='register_api_v1'),
-    path(f'{url}register/perfil/', views.PerfilCreateAPI.as_view(), 
+    path(f'{url}register/', views.UserCreateAPI.as_view(), 
+    name='user-create_api_v1'),
+
+    path(f'{url}register/perfil/<int:pk>', views.PerfilCreateAPI.as_view(), 
     name='perfis-create_api_v1'),
 
     path(f'{url}update/perfil/<int:pk>', views.PerfilUpdateAPI.as_view(), 

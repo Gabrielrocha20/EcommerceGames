@@ -8,7 +8,8 @@ from rest_framework.status import (HTTP_200_OK, HTTP_400_BAD_REQUEST,
                                    HTTP_404_NOT_FOUND)
 
 from ..models import Perfil
-from ..serializers import PerfilSerializer, UserSerializer
+from ..serializers import (PerfilSerializer, UserRegisterSerializer,
+                           UserSerializer)
 
 
 class LoginAPI(generics.GenericAPIView):
@@ -33,14 +34,24 @@ class LogoutView(generics.RetrieveAPIView):
         logout(request)
         return Response({'status': 'ok'})
 
+class UserCreateAPI(generics.CreateAPIView):
+    serializer_class = UserRegisterSerializer
+    # permission_classes = [IsAuthenticated]
 class PerfilCreateAPI(generics.CreateAPIView):
-    authentication_classes = [TokenAuthentication]
     queryset = Perfil.objects.all()
     serializer_class = PerfilSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        pk = self.kwargs['pk']
+        try:
+            usuario = User.objects.get(id=pk)
+        except User.DoesNotExist:
+            return Response({"error": "User não encontrado"}, status=404)
+
+        serializer.save(usuario=usuario)
 
 class PerfilUpdateAPI(generics.RetrieveUpdateAPIView):
-    authentication_classes = [TokenAuthentication]
     queryset = Perfil.objects.all()
     serializer_class = PerfilSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
