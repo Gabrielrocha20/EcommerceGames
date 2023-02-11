@@ -89,8 +89,8 @@ WSGI_APPLICATION = 'loja.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'project_database',
-        'USER': 'test_user',
+        'NAME': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '5432'
