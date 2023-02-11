@@ -2,7 +2,6 @@
 foi criado somente o back end em django
 
 # No terminal
-cd backend<br>
 python -m venv venv<br>
 venv/Scripts/activate<br>
 para instalar todas as dependencias<br>
